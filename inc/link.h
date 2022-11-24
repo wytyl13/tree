@@ -13,6 +13,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 typedef char ElementType, *ElementTypeP;
+typedef int ElementIntType, *ElementIntTypeP;
 struct Node;
 typedef struct Node LinkNode, *LinkNodeP;
 struct Node

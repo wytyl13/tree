@@ -43,8 +43,10 @@ TreeP transformTree(LinkQueueP linkQueueP)
         }
         else
         {
-            // create treeNode, pop and define the left child
-            // pop and define the right child.
+            // create treeNode, pop and define the right child
+            // pop and define the left child. notice the sequence.
+            // the right child should point to first pop pointer.
+            // the left child should point to second pop pointer.
             // push the treeNode.
             // abc+*d-e/
             // you will get all void type pointer in stackTree.
@@ -56,23 +58,14 @@ TreeP transformTree(LinkQueueP linkQueueP)
             // or return this root used TreeP but you should cast first.
             // notice, this function popTree will return void type pointer
             // if you want use it, you should cast first.
-            printf("%p\t", treeP);
-            printf("%p\t", treeP->Left);
-            printf("%p\t", treeP->Right);
+            // init the pointer.
             pointer = (TreeP)getTopTree(&stackTree);
-            printf("%c\t", pointer->Element);
-            popTree(&stackTree, pointer);
-            treeP->Left = pointer;
-            printf("%c\t", treeP->Left->Element);
-            printf("%c\t", pointer->Element);
-            pointer = (TreeP)getTopTree(&stackTree);
-            printf("%c\t", pointer->Element);
             popTree(&stackTree, pointer);
             treeP->Right = pointer;
-            printf("%c\t", treeP->Right->Element);
-            printf("%c\n", pointer->Element);
+            pointer = (TreeP)getTopTree(&stackTree);
+            popTree(&stackTree, pointer);
+            treeP->Left = pointer;
             pushTree(&stackTree, treeP);
-            // printf("%p\n", getTopTree(&stackTree));
 
         }
     }
@@ -84,13 +77,32 @@ void preOrderTraversal(TreeP root, int depth)
 {
     if (root)
     {
-        int i;
-        for (i = 0; i < depth; i++)
-        {
-            printf(" |");
-        }
-        printf("-%c\n", root->Element);
+        printf("%c", root->Element);
         preOrderTraversal(root->Left, depth + 1);
         preOrderTraversal(root->Right, depth + 1);
     }
+    
 }
+
+void postOrderTraversal(TreeP root, int depth) 
+{
+    if (root)
+    {
+        postOrderTraversal(root->Left, depth + 1);
+        postOrderTraversal(root->Right, depth + 1);
+        printf("%c", root->Element);       
+    }
+}
+
+void inOrderTraversal(TreeP root, int depth) 
+{
+    if (root)
+    {
+        inOrderTraversal(root->Left, depth + 1);
+        printf("%c", root->Element);
+        inOrderTraversal(root->Right, depth + 1);
+    }
+}
+
+
+

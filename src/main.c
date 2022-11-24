@@ -340,17 +340,26 @@ LinkQueueP test_expression()
 
 int main(int argc, const char *argv[])
 {
+    // -------expression tree test------------
     test_stack();
     test_queue();
     LinkQueueP linkQueueP = test_expression();
     // printQueue(linkQueueP);
     // abc+*d-e/
     TreeP treeP = transformTree(linkQueueP);
-    printf("%c\n", treeP->Right->Left->Element);
-    // preOrderTraversal(treeP, 0);
+    // printf("%c\n", treeP->Right->Right->Left->Right->Element);
+    preOrderTraversal(treeP, 0); // /-*a+bcde
+    printf("\n");
+
+    inOrderTraversal(treeP, 0); // a*b+c-d/e
+    printf("\n");
+
+    postOrderTraversal(treeP, 0); // abc+*d-e/
+    printf("\n");
     freePointer(linkQueueP);
     freePointer(treeP);
-
+    // -------expression tree test------------
+    
     // test---------------------------------------------------------
     // char str[20] = {"a+b*c+(d-e)"};
     // // SqStack stack;
