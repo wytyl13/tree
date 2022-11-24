@@ -26,7 +26,8 @@ TreeP transformTree(LinkQueueP linkQueueP)
     SqStackTree stackTree;
     initStackTree(&stackTree);
     ElementType element;
-    Tree pointer;
+    // you should define a pointer to store TreeP.
+    TreeP pointer = NULL;
     TreeP treeP = NULL;
     while (delQueue(linkQueueP, &element))
     {
@@ -38,6 +39,7 @@ TreeP transformTree(LinkQueueP linkQueueP)
             // but we must define the treeNode for each element.
             // so you must define the treeNode in initTree function.
             pushTree(&stackTree, treeP);
+
         }
         else
         {
@@ -52,13 +54,29 @@ TreeP transformTree(LinkQueueP linkQueueP)
             // and the last, treeP is a void type pointer, because you add it onto tree.
             // it has cast to void type in push function. so you can return this root used void *
             // or return this root used TreeP but you should cast first.
-            popTree(&stackTree, &pointer);
-            treeP->Left = (TreeP)&pointer;
-            popTree(&stackTree, &pointer);
-            treeP->Right = (TreeP)&pointer;
+            // notice, this function popTree will return void type pointer
+            // if you want use it, you should cast first.
+            printf("%p\t", treeP);
+            printf("%p\t", treeP->Left);
+            printf("%p\t", treeP->Right);
+            pointer = (TreeP)getTopTree(&stackTree);
+            printf("%c\t", pointer->Element);
+            popTree(&stackTree, pointer);
+            treeP->Left = pointer;
+            printf("%c\t", treeP->Left->Element);
+            printf("%c\t", pointer->Element);
+            pointer = (TreeP)getTopTree(&stackTree);
+            printf("%c\t", pointer->Element);
+            popTree(&stackTree, pointer);
+            treeP->Right = pointer;
+            printf("%c\t", treeP->Right->Element);
+            printf("%c\n", pointer->Element);
             pushTree(&stackTree, treeP);
+            // printf("%p\n", getTopTree(&stackTree));
+
         }
     }
+    // transform from void * to TreeP
     return (TreeP)treeP;
 }
 

@@ -332,11 +332,11 @@ LinkQueueP test_expression()
     return linkQueueP;
 }
 
-TreeP test_tree_transform(LinkQueueP linkQueueP) 
-{
-    TreeP treeP = transformTree(linkQueueP);
-    return treeP;
-}
+// TreeP test_tree_transform(LinkQueueP linkQueueP) 
+// {
+//     TreeP treeP = transformTree(linkQueueP);
+//     return treeP;
+// }
 
 int main(int argc, const char *argv[])
 {
@@ -344,8 +344,10 @@ int main(int argc, const char *argv[])
     test_queue();
     LinkQueueP linkQueueP = test_expression();
     // printQueue(linkQueueP);
-    TreeP treeP = test_tree_transform(linkQueueP);
-    preOrderTraversal(treeP, 0);
+    // abc+*d-e/
+    TreeP treeP = transformTree(linkQueueP);
+    printf("%c\n", treeP->Right->Left->Element);
+    // preOrderTraversal(treeP, 0);
     freePointer(linkQueueP);
     freePointer(treeP);
 
