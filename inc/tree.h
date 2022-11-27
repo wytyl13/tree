@@ -28,7 +28,7 @@ struct OriginalNode;
 struct BinaryNode;
 typedef struct OriginalNode *PtrToNode;
 typedef struct BinaryNode Tree, *TreeP;
-typedef struct SearchNode SearchTree, *SearchTreeP;
+
 
 struct OriginalNode
 {
@@ -44,12 +44,7 @@ struct BinaryNode
     TreeP Right;
 };
 
-struct SearchNode
-{
-    ElementIntType ElementInt;
-    SearchTreeP Left;
-    SearchTreeP Right;
-};
+
 
 // then you should define some tree management method.
 // just like init tree. traversal, and so on.
@@ -85,17 +80,5 @@ void postOrderTraversal(TreeP root, int depth);
 
 void inOrderTraversal(TreeP root, int depth);
 
-
-// define the function about searchTree
-SearchTreeP makeEmpty(SearchTreeP searchTreeP);
-SearchTreeP find(SearchTreeP searchTreeP, ElementIntType elementInt);
-SearchTreeP findMin(SearchTreeP searchTreeP);
-SearchTreeP findMax(SearchTreeP searchTreeP);
-SearchTree insert(SearchTreeP searchTreeP, ElementIntType elementInt);
-SearchTree delete(SearchTreeP searchTreeP, ElementIntType elementInt);
-ElementType retriver(SearchTreeP searchTreeP);
-
-
+void clearTree(TreeP root);
 #endif
-
-

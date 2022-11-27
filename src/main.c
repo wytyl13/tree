@@ -15,6 +15,7 @@
 #include "../inc/queue.h"
 #include "../inc/expression.h"
 #include "../inc/tree.h"
+#include "../inc/searchTree.h"
 
 // // define the list.h head file in this file.
 
@@ -248,15 +249,6 @@ because the root node [6] is less than its left child node [7].
 // <<<<<<<<<<<<<<<<<the implementation file.
 */
 
-// free the pointer
-void freePointer(void *pointer) 
-{
-    if (pointer != NULL)
-    {
-        free(pointer);
-        pointer = NULL;
-    }
-}
 
 // test stack
 // you should malloc this pointer, or you will get segmentation fault.
@@ -340,26 +332,6 @@ LinkQueueP test_expression()
 
 int main(int argc, const char *argv[])
 {
-    // -------expression tree test------------
-    test_stack();
-    test_queue();
-    LinkQueueP linkQueueP = test_expression();
-    // printQueue(linkQueueP);
-    // abc+*d-e/
-    TreeP treeP = transformTree(linkQueueP);
-    // printf("%c\n", treeP->Right->Right->Left->Right->Element);
-    preOrderTraversal(treeP, 0); // /-*a+bcde
-    printf("\n");
-
-    inOrderTraversal(treeP, 0); // a*b+c-d/e
-    printf("\n");
-
-    postOrderTraversal(treeP, 0); // abc+*d-e/
-    printf("\n");
-    freePointer(linkQueueP);
-    freePointer(treeP);
-    // -------expression tree test------------
-    
     // test---------------------------------------------------------
     // char str[20] = {"a+b*c+(d-e)"};
     // // SqStack stack;
@@ -376,5 +348,58 @@ int main(int argc, const char *argv[])
     // }
     // printf("\n");
     // test----------------------------------------------------------
+    // -------expression tree test------------
+    
+    test_stack();
+    test_queue();
+    LinkQueueP linkQueueP = test_expression();
+    // printQueue(linkQueueP);
+    // abc+*d-e/
+    TreeP treeP = transformTree(linkQueueP);
+    // printf("%c\n", treeP->Right->Right->Left->Right->Element);
+    preOrderTraversal(treeP, 0); // /-*a+bcde
+    printf("\n");
+
+    inOrderTraversal(treeP, 0); // a*b+c-d/e
+    printf("\n");
+
+    postOrderTraversal(treeP, 0); // abc+*d-e/
+    printf("\n");
+    freePointer(linkQueueP);
+    // notice, you should not free the root pointer directly
+    // you should free all pointer used this root, then you can free the root
+    // here you should use the recursive method.
+    // freePointer(treeP);
+
+    // clear this expression tree
+    // notice, this function used recursive method to free all pointer in this expression tree,
+    // and the address that freed pointer pointing to is also exist. just the content of this address is droped.
+    // so you can get the address that the root pointer point, but the content is not exist.
+    clearTree(treeP);
+    printf("%c\n", treeP->Element);
+    // -------expression tree test------------
+
+    // -------searchTree test------------
+    SearchTreeP searchTreeP = NULL;
+    searchTreeP = insert(searchTreeP, 1);
+    searchTreeP = insert(searchTreeP, 0);
+    searchTreeP = insert(searchTreeP, 2);
+    searchTreeP = insert(searchTreeP, 3);
+    searchTreeP = insert(searchTreeP, 5);
+    searchTreeP = insert(searchTreeP, 4);
+    printf("%d\n",searchTreeP->ElementInt);
+    inOrderSearchTree(searchTreeP, 0);
+    printf("\n"); //012354
+    preOrderSearchTree(searchTreeP, 0);
+    printf("\n"); // 012354
+    postOrderSearchTree(searchTreeP, 0);
+    printf("\n"); // 012354
+
+    makeEmpty(searchTreeP);
+    // printf("%d\n", searchTreeP->Left->ElementInt); return error content. because the address is clear.
+    // -------searchTree test------------
+
+
+    
     return 0;
 }

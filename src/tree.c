@@ -58,8 +58,6 @@ TreeP transformTree(LinkQueueP linkQueueP)
             // or return this root used TreeP but you should cast first.
             // notice, this function popTree will return void type pointer
             // if you want use it, you should cast first.
-            // init the pointer.
-            pointer = (TreeP)getTopTree(&stackTree);
             popTree(&stackTree, pointer);
             treeP->Right = pointer;
             pointer = (TreeP)getTopTree(&stackTree);
@@ -104,5 +102,12 @@ void inOrderTraversal(TreeP root, int depth)
     }
 }
 
-
-
+void clearTree(TreeP root) 
+{
+    if (root)
+    {
+        clearTree(root->Left);
+        clearTree(root->Right);
+        freePointer(root);
+    }
+}
