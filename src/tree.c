@@ -7,6 +7,9 @@
  * @Description: we usually init the char used '0'. int the char[20] used {0};
  * init the int used 0; we uded param to init the Element of TreeP.
  */
+
+
+
 void initBinaryTree(TreeP treeP, ElementType element) 
 {
     treeP->Element = element;

@@ -16,7 +16,7 @@
 #include "../inc/expression.h"
 #include "../inc/tree.h"
 #include "../inc/searchTree.h"
-
+#include "../inc/AVLTree.h"
 // // define the list.h head file in this file.
 
 /* #ifndef _LIST_H
@@ -391,13 +391,38 @@ int main(int argc, const char *argv[])
     inOrderSearchTree(searchTreeP, 0);
     printf("\n"); //012354
     preOrderSearchTree(searchTreeP, 0);
-    printf("\n"); // 012354
+    printf("\n"); // 102354
     postOrderSearchTree(searchTreeP, 0);
-    printf("\n"); // 012354
+    printf("\n"); // 023541
 
     makeEmpty(searchTreeP);
     // printf("%d\n", searchTreeP->Left->ElementInt); return error content. because the address is clear.
-    // -------searchTree test------------
+    // 97 page
+    // ------------searchTree test------------
+
+    // ------------AVL tree test------------
+    AvlTreeP avlTreeP = NULL;
+    // notice, because the height is static function, so you can not use it here.
+    // printf("%d\n", height(avlTreeP));
+    avlTreeP = insertAvl(avlTreeP, 1);
+    avlTreeP = insertAvl(avlTreeP, 2);
+    avlTreeP = insertAvl(avlTreeP, 3);
+    avlTreeP = insertAvl(avlTreeP, 4);
+    avlTreeP = insertAvl(avlTreeP, 5);
+    avlTreeP = insertAvl(avlTreeP, 6);
+    // avlTreeP = insertAvl(avlTreeP, 7);
+    // avlTreeP = insertAvl(avlTreeP, 8);
+    // avlTreeP = insertAvl(avlTreeP, 9);
+    // avlTreeP = insertAvl(avlTreeP, 10);
+    printf("%d\n", avlTreeP->ElementInt);
+    printf("%d\n", avlTreeP->Left->ElementInt);
+    printf("%d\n", avlTreeP->Right->ElementInt);
+    printf("%d\n", avlTreeP->Right->Right->ElementInt);
+    printf("%d\n", avlTreeP->Left->Left->ElementInt);
+    printf("%d\n", avlTreeP->Left->Right->ElementInt);
+
+    // ------------AVL tree test------------
+
 
 
     

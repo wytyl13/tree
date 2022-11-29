@@ -29,7 +29,6 @@ struct BinaryNode;
 typedef struct OriginalNode *PtrToNode;
 typedef struct BinaryNode Tree, *TreeP;
 
-
 struct OriginalNode
 {
     ElementType Element;
@@ -43,6 +42,7 @@ struct BinaryNode
     TreeP Left;
     TreeP Right;
 };
+
 
 
 
