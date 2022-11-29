@@ -427,6 +427,7 @@ int main(int argc, const char *argv[])
     postOrderAvlTree(avlTreeP, 0);
     printf("\n");
 
+    // page108 splay tree.
     // ------------AVL tree test------------
 
 
