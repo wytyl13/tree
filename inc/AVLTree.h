@@ -26,4 +26,9 @@ struct AvlNode
 AvlTreeP insertAvl(AvlTreeP avlTreeP, ElementIntType elementInt);
 AvlTreeP deleteAvl(AvlTreeP avlTreeP, ElementIntType elementInt);
 ElementIntType retrieve(AvlTreeP avlTreeP);
+
+void preOrderAvlTree(AvlTreeP avlTreeP, int depth);
+void inOrderAvlTree(AvlTreeP avlTreeP, int depth);
+void postOrderAvlTree(AvlTreeP avlTreeP, int depth);
+
 #endif

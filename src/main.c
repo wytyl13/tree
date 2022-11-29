@@ -420,6 +420,12 @@ int main(int argc, const char *argv[])
     printf("%d\n", avlTreeP->Right->Right->ElementInt);
     printf("%d\n", avlTreeP->Left->Left->ElementInt);
     printf("%d\n", avlTreeP->Left->Right->ElementInt);
+    preOrderAvlTree(avlTreeP, 0);
+    printf("\n");
+    inOrderAvlTree(avlTreeP, 0);
+    printf("\n");
+    postOrderAvlTree(avlTreeP, 0);
+    printf("\n");
 
     // ------------AVL tree test------------
 

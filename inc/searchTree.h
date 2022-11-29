@@ -141,6 +141,13 @@ ElementType retriver(SearchTreeP searchTreeP);
 // how to define, it is a special binary tree, you should redefine a complex
 // insert function.
 // to test the convenient, we defined the preorder, inorder and postorder method for search tree.
+// these three travesal method is general used for binary search tree and avl binary search tree.
+// because they have the same attribute ElementInt to store the number.
+// so you should use the void * to accept the param.
+// but you should cast first before you used the pointer that void accept,
+// so you can not use the general method to define this function.
+// so we will define it in AVLTree file. or you can use c++ class to do it.
+// but it is not meaning, because we just aimed to learn, not to do business application.
 void preOrderSearchTree(SearchTreeP searchTreeP, int depth);
 void inOrderSearchTree(SearchTreeP searchTreeP, int depth);
 void postOrderSearchTree(SearchTreeP searchTreeP, int depth);

@@ -141,3 +141,33 @@ AvlTreeP insertAvl(AvlTreeP avlTreeP, ElementIntType elementInt)
     avlTreeP->Height = max(height(avlTreeP->Left), height(avlTreeP->Right)) + 1;
     return avlTreeP;
 }
+
+void preOrderAvlTree(AvlTreeP avlTreeP, int depth) 
+{
+    if (avlTreeP)
+    {
+        printf("%d", avlTreeP->ElementInt);
+        preOrderAvlTree(avlTreeP->Left, depth + 1);
+        preOrderAvlTree(avlTreeP->Right, depth + 1);
+    }
+}
+
+void inOrderAvlTree(AvlTreeP avlTreeP, int depth) 
+{
+    if (avlTreeP)
+    {
+        preOrderAvlTree(avlTreeP->Left, depth + 1);
+        printf("%d", avlTreeP->ElementInt);
+        preOrderAvlTree(avlTreeP->Right, depth + 1);
+    }
+}
+
+void postOrderAvlTree(AvlTreeP avlTreeP, int depth) 
+{
+    if (avlTreeP)
+    {
+        preOrderAvlTree(avlTreeP->Left, depth + 1);
+        preOrderAvlTree(avlTreeP->Right, depth + 1);
+        printf("%d", avlTreeP->ElementInt);
+    }
+}
