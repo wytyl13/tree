@@ -382,11 +382,12 @@ int main(int argc, const char *argv[])
     // -------searchTree test------------
     SearchTreeP searchTreeP = NULL;
     searchTreeP = insert(searchTreeP, 1);
-    searchTreeP = insert(searchTreeP, 0);
     searchTreeP = insert(searchTreeP, 2);
     searchTreeP = insert(searchTreeP, 3);
-    searchTreeP = insert(searchTreeP, 5);
     searchTreeP = insert(searchTreeP, 4);
+    searchTreeP = insert(searchTreeP, 5);
+    searchTreeP = insert(searchTreeP, 6);
+    searchTreeP = insert(searchTreeP, 7);
     printf("%d\n",searchTreeP->ElementInt);
     inOrderSearchTree(searchTreeP, 0);
     printf("\n"); //012354
@@ -404,32 +405,43 @@ int main(int argc, const char *argv[])
     AvlTreeP avlTreeP = NULL;
     // notice, because the height is static function, so you can not use it here.
     // printf("%d\n", height(avlTreeP));
-    avlTreeP = insertAvl(avlTreeP, 1);
+    // avlTreeP = insertAvl(avlTreeP, 1);
     avlTreeP = insertAvl(avlTreeP, 2);
-    avlTreeP = insertAvl(avlTreeP, 3);
     avlTreeP = insertAvl(avlTreeP, 4);
     avlTreeP = insertAvl(avlTreeP, 5);
     avlTreeP = insertAvl(avlTreeP, 6);
-    // avlTreeP = insertAvl(avlTreeP, 7);
+    avlTreeP = insertAvl(avlTreeP, 7);
+    // avlTreeP = insertAvl(avlTreeP, 3);
     // avlTreeP = insertAvl(avlTreeP, 8);
     // avlTreeP = insertAvl(avlTreeP, 9);
     // avlTreeP = insertAvl(avlTreeP, 10);
     printf("%d\n", avlTreeP->ElementInt);
     printf("%d\n", avlTreeP->Left->ElementInt);
     printf("%d\n", avlTreeP->Right->ElementInt);
-    printf("%d\n", avlTreeP->Right->Right->ElementInt);
-    printf("%d\n", avlTreeP->Left->Left->ElementInt);
-    printf("%d\n", avlTreeP->Left->Right->ElementInt);
-    preOrderAvlTree(avlTreeP, 0);
-    printf("\n");
-    inOrderAvlTree(avlTreeP, 0);
-    printf("\n");
-    postOrderAvlTree(avlTreeP, 0);
-    printf("\n");
-
+    // printf("%d\n", avlTreeP->Left->Left->ElementInt);
+    // printf("%d\n", avlTreeP->Left->Right->ElementInt);
+    // printf("%d\n", avlTreeP->Right->Left->ElementInt);
+    // printf("%d\n", avlTreeP->Right->Right->ElementInt);
+    // preOrderAvlTree(avlTreeP, 0);
+    // printf("\n");
+    // inOrderAvlTree(avlTreeP, 0);
+    // printf("\n");
+    // postOrderAvlTree(avlTreeP, 0);
+    // printf("\n");
+    // printf("%d\n", avlTreeP->Height);
+    // printf("%d\n", height_recursive_call(avlTreeP));
+    // printf("%d\n", height_recursive_call_used_pointer(avlTreeP));
     // page108 splay tree.
+    // omit the splay tree.
     // ------------AVL tree test------------
 
+    // ------------B tree test------------
+    
+
+
+
+
+    // ------------B tree test------------
 
 
     

@@ -7,6 +7,9 @@
  * @Description: in order to more efficient, we will add the height attribute
  * for AVLNode, because we can judge the legitimacy about AVL tree based on the 
  * height attribute. and the original binary search tree has not this attribute.
+ * the limits of the attribute height for AVL tree the difference between the height of left and right for 
+ * each node is less or equal to one. it means the difference between the left and right for each node is not more
+ * than 1.
 ***********************************************************************/
 #ifndef _AVLTREE_H
 #define _AVLTREE_H
@@ -27,6 +30,10 @@ AvlTreeP insertAvl(AvlTreeP avlTreeP, ElementIntType elementInt);
 AvlTreeP deleteAvl(AvlTreeP avlTreeP, ElementIntType elementInt);
 ElementIntType retrieve(AvlTreeP avlTreeP);
 
+// this file is designed aims to call the static file height_recursive_call function what dedicated to the implementation
+// file AVLTree.c file.
+int height_recursive_call(AvlTreeP avlTreeP);
+int height_recursive_call_used_pointer(AvlTreeP avlTreeP); 
 void preOrderAvlTree(AvlTreeP avlTreeP, int depth);
 void inOrderAvlTree(AvlTreeP avlTreeP, int depth);
 void postOrderAvlTree(AvlTreeP avlTreeP, int depth);

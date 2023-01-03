@@ -9,6 +9,7 @@ static AvlTreeP doubleRotationWithLeft(AvlTreeP root);
 static AvlTreeP doubleRotationWithLeft(AvlTreeP root);
 static int height(AvlTreeP avlTreeP);
 static int max(int a, int b);
+static int max_pointer(AvlTreeP avlTreeP);
 
 /**
  * @Author: weiyutao
@@ -73,7 +74,62 @@ static int height(AvlTreeP avlTreeP)
     return avlTreeP->Height;
 }
 
-static int max(int a, int b) 
+// we can also use the function to calculate the height of a tree.
+// we will use the recursive method to do it
+// if you want to define a static function, and you want 
+// use this function in another file, then you should define it in
+// its implementation file, because static function must be used in current file.
+// then, it means static function should not statement in headfile, but should define it 
+// in c file directly. but this function must be used in this file.
+// so you should define a function that be statemented in headfile to call this static function in implementation.
+// or you will can not call this static function in main.c file, because this static file is dedicated to 
+// the AVLTree.c file. just like the static function height_recursive.
+// so, we usually defined the static function in implementation file, and define 
+// the function that call this static function in implementation file in head file. 
+// but this function also used Height attribute. so this function is more complex than getting the Height attribute directly.
+static int height_recursive(AvlTreeP avlTreeP)
+{
+    if (avlTreeP == NULL)
+    {
+        return -1;
+    }
+    return 1 + max(avlTreeP->Left->Height, avlTreeP->Right->Height);
+}
+
+// we can define the height got function by just using the root pointer.
+// so we can redefine this function. this function will use the max function
+// that dedicated to getting the max height from the left node and right node of this root tree.
+// but this function will also use this Height attribute of AVLTreep struct.
+// so this is also a complex function.
+static int height_used_pointer(AvlTreeP avlTreeP) 
+{
+    if (avlTreeP == NULL)
+    {
+        return -1;
+    }
+    return 1 + max_pointer(avlTreeP);
+}
+
+static int max_pointer(AvlTreeP avlTreeP) 
+{
+    if (avlTreeP->Left->Height > avlTreeP->Right->Height)
+    {
+        return avlTreeP->Left->Height;
+    }
+    return avlTreeP->Right->Height;
+}
+
+int height_recursive_call_used_pointer(AvlTreeP avlTreeP) 
+{
+    return height_used_pointer(avlTreeP);
+}
+
+int height_recursive_call(AvlTreeP avlTreeP) 
+{
+    return height_recursive(avlTreeP);
+}
+
+static int max(a, b) 
 {
     if (a > b)
     {
@@ -81,6 +137,7 @@ static int max(int a, int b)
     }
     return b;
 }
+
 
 AvlTreeP insertAvl(AvlTreeP avlTreeP, ElementIntType elementInt) 
 {
