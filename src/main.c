@@ -17,6 +17,7 @@
 #include "../inc/tree.h"
 #include "../inc/searchTree.h"
 #include "../inc/AVLTree.h"
+#include "../inc/hash_table.h"
 // // define the list.h head file in this file.
 
 /* #ifndef _LIST_H
@@ -437,13 +438,22 @@ int main(int argc, const char *argv[])
 
     // ------------B tree test------------
     
-
-
-
-
     // ------------B tree test------------
 
 
-    
+
+    // ------------hash table test------------
+    const char key[] = "wo1ini";
+    Index index_ascii = hash_ascii(key, 10007);
+    printf("the return index_ascii is %u\n", index_ascii);
+
+    Index index_alphabet = hash_alphabet(key, 10007);
+    printf("the return index_alphabet is %u\n", index_alphabet);
+
+    Index index = hash(key, 10007);
+    printf("the return index is %u\n", index);
+    // ------------hash table test------------
+
+
     return 0;
 }

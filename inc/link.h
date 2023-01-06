@@ -23,8 +23,23 @@ struct Node
     ElementType data;
     LinkNodeP next;
 };
+
+// add the listNode that hash table used.
+// but we should notice, if we define the listNode at here, the cross reference
+// will happen. because the struct ListNode used Position, and the struct
+// Positon used LinkNode. so the compilation fails will be happen.
+// so we should consider define the listNode in the head file of hash table.
+struct ListNode;
+typedef struct ListNode *Position;
+struct ListNode
+{
+    ElementType element;
+    Position Next;
+};
+
 // sys error
-void sysError(const char *str);
+void
+sysError(const char *str);
 // free the pointer
 void freePointer(void *pointer);
 #endif
